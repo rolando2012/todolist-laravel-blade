@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 py-2 shadow-sm">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark px-4 py-2 shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold fs-4 d-flex align-items-center gap-2" href="{{ route('tasks.index') }}">
             <i class="bi bi-check2-square text-white"></i>
@@ -10,14 +10,14 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-            <ul class="nav nav-pills flex-column flex-lg-row gap-2 mt-3 mt-lg-0">
+            <ul class="nav nav-pills flex-column flex-md-row gap-2 mt-3 mt-md-0">
                 <li class="nav-item">
                     <a class="nav-link text-center {{ active_link('tasks.*') }}" href="{{ route('tasks.index') }}">
                         Tareas
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center {{ active_link('categories.*') }}" href="#">
+                    <a class="nav-link text-center {{ active_link('categories.*') }}" href="{{ route('categories.index') }}">
                         Categorías
                     </a>
                 </li>

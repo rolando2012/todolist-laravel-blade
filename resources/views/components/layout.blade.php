@@ -17,7 +17,7 @@
 
     <x-navbar />
 
-    <main class="container py-4 px-0">
+    <main class="container py-4 px-4 px-sm-0">
         {{ $slot }}
     </main>
 
