@@ -28,13 +28,13 @@
 
             <div class="d-flex align-items-center gap-3">
             
-                <x-btn_primary type="button" icon="floppy-fill">
+                <x-btns.btn_primary type="button" icon="floppy-fill">
                     Guardar
-                </x-btn_primary>
+                </x-btns.btn_primary>
 
-                <a href="{{ route('categories.index') }}" class="btn btn-link text-secondary text-decoration-none fw-medium p-0 ms-2 fs-7">
+                <x-btns.btn_secondary href="{{ route('categories.index') }}" >
                     Cancelar
-                </a>
+                </x-btns.btn_secondary>
             </div>
         </form>
     </x-forms.form_card>
