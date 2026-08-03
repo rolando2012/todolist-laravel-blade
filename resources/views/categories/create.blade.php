@@ -16,7 +16,7 @@
                     class="form-control rounded-3 py-2 @error('name') is-invalid @enderror" 
                     value="{{ old('name') }}" 
                     placeholder="Ej. Estudio, Trabajo..."
-                    required
+                    
                     autofocus
                 >                
                 @error('name')
@@ -27,11 +27,9 @@
             </div>
 
             <div class="d-flex align-items-center gap-3">
-            
-                <x-btns.btn_primary type="button" icon="floppy-fill">
+                <x-btns.btn_primary type="submit" icon="floppy-fill">
                     Guardar
                 </x-btns.btn_primary>
-
                 <x-btns.btn_secondary href="{{ route('categories.index') }}" >
                     Cancelar
                 </x-btns.btn_secondary>

@@ -25,4 +25,14 @@ class StoreCategoryRequest extends FormRequest
             'name' => 'required|string|max:100|unique:categories,name',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'El nombre de la categoría es obligatorio y no puede quedar vacío.',
+            'name.string'   => 'El nombre de la categoría debe ser un texto válido.',
+            'name.max'      => 'El nombre es demasiado largo. No puede superar los 100 caracteres.',
+            'name.unique'   => 'Ya existe una categoría registrada con ese mismo nombre.',
+        ];
+    }
 }
