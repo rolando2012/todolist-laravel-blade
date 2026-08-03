@@ -1,6 +1,6 @@
 <x-layout title="To-Do List | Nueva Categoría">
 
-    <h2 class="fw-bold text-dark mb-4 fs-3">Nueva categoría</h2>
+    <x-titles.title_secondary >Nueva categoría</x-titles.title_secondary>
 
     <x-forms.form_card>
         <form action="{{ route('categories.store') }}" method="POST">

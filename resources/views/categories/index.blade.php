@@ -1,6 +1,6 @@
 <x-layout title="To-Do List | Categorias">
     <section class="d-flex justify-content-between align-items-center mb-4">
-        <x-title icon="folder-fill">Categorías</x-title>
+        <x-titles.title icon="folder-fill">Categorías</x-titles.title>
         <x-btns.btn_primary href="{{ route('categories.create') }}" icon="folder-plus">
             Nueva categoría
         </x-btns.btn_primary>
