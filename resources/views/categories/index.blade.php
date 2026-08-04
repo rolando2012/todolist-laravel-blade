@@ -23,6 +23,7 @@
                     <td class="pe-4 py-3 text-end">
                         <x-table.table_actions 
                             :showUrl="route('categories.show', $category)"
+                            :editUrl="route('categories.edit', $category)"
                         />
                     </td>
                 </tr>

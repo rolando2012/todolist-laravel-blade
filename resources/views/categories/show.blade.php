@@ -1,4 +1,4 @@
-<x-layout title="To-Do List | Categoría">
+<x-layout title="To-Do List | Ver Categoría">
 
     <x-titles.title_secondary>
         Detalle de categoría
