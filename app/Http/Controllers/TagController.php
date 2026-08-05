@@ -30,7 +30,8 @@ class TagController extends Controller
      */
     public function store(StoreTagRequest $request)
     {
-        //
+        Tag::create($request->validated());
+        return redirect()->route('tags.index')->with('success', 'Etiqueta creada con éxito.');
     }
 
     /**
