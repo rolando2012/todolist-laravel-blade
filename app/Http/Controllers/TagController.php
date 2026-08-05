@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('tags.index');
+        $tags = Tag::latest()->get();
+        return view('tags.index',compact('tags'));
     }
 
     /**
