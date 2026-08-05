@@ -15,9 +15,14 @@
         title="Editar">
         <i class="bi bi-pencil"></i>
     </a>
-    <button type="submit"
-            class="btn btn-light border rounded-circle text-danger action-btn action-delete"
-            title="Eliminar">
-        <i class="bi bi-trash"></i>
-    </button>
+    <form action="{{ $deleteUrl }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar este elemento?');">
+        @csrf
+        @method('DELETE')
+        <button type="submit"
+                class="btn btn-light border rounded-circle text-danger action-btn action-delete"
+                title="Eliminar">
+            <i class="bi bi-trash"></i>
+        </button>
+    </form>
+
 </div>

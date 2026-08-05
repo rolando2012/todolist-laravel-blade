@@ -24,6 +24,7 @@
                         <x-table.table_actions 
                             :showUrl="route('categories.show', $category)"
                             :editUrl="route('categories.edit', $category)"
+                            :deleteUrl="route('categories.destroy', $category)"
                         />
                     </td>
                 </tr>
