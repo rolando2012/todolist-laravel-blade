@@ -22,7 +22,17 @@ class UpdateTagRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:50|unique:tags,name,' . $this->tag->id,
+        ];
+    }
+
+     public function messages(): array
+    {
+        return [
+            'name.required' => 'El nombre de la etiqueta es obligatorio y no puede quedar vacío.',
+            'name.string'   => 'El nombre de la etiqueta debe ser un texto válido.',
+            'name.max'      => 'El nombre es demasiado largo. No puede superar los 50 caracteres.',
+            'name.unique'   => 'Ya existe una etiqueta registrada con ese mismo nombre.',
         ];
     }
 }

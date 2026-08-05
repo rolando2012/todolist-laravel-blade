@@ -55,7 +55,8 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $tag->update($request->validated());
+        return redirect()->route('tags.index')->with('success', 'Etiqueta actualizada correctamente.');
     }
 
     /**
