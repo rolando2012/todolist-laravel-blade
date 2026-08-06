@@ -11,7 +11,8 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return view('tasks.index');
+        $tasks = Task::latest()->get();
+        return view('tasks.index',compact('tasks'));
     }
 
     public function create()
