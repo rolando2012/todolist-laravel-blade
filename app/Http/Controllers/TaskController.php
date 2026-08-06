@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTaskRequest;
 use App\Http\Requests\UpdateTaskRequest;
+use App\Models\Category;
+use App\Models\Tag;
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -17,7 +19,9 @@ class TaskController extends Controller
 
     public function create()
     {
-        //
+        $categories = Category::orderBy('name')->get();
+        $tags = Tag::orderBy('name')->get();
+        return view('tasks.create', compact('categories', 'tags'));
     }
 
     public function store(StoreTaskRequest $request)
