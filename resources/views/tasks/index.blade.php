@@ -9,18 +9,18 @@
     <x-table.table_card>
         <thead class="table-light border-bottom text-uppercase text-secondary fs-7">
             <tr>
-                <th scope="col" class="ps-4 py-3 fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Estado</th>
-                <th scope="col" class="py-3 fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Título</th>
-                <th scope="col" class="py-3 fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Categoría</th>
-                <th scope="col" class="py-3 fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Etiquetas</th>
-                <th scope="col" class="pe-4 py-3 text-end fw-bold" style="font-size: 0.75rem; letter-spacing: 0.5px;">Acciones</th>
+                <th scope="col" class="custom-th-style text-secondary ps-4 py-3 fw-bold">Estado</th>
+                <th scope="col" class="custom-th-style text-secondary py-3 fw-bold">Título</th>
+                <th scope="col" class="custom-th-style text-secondary py-3 fw-bold">Categoría</th>
+                <th scope="col" class="custom-th-style text-secondary py-3 fw-bold">Etiquetas</th>
+                <th scope="col" class="custom-th-style text-secondary pe-4 py-3 text-end fw-bold">Acciones</th>
             </tr>
         </thead>
         <tbody class="border-0">
             @forelse($tasks as $task)
                 <tr class="border-bottom">
                     <td class="ps-4 py-3">
-                        {{$task->state}}
+                        <x-badges.status_badge :completed="$task->state" />
                     </td>
                     <td class="py-3 fw-semibold text-dark">
                         <span class="{{ $task->state ? 'text-decoration-line-through text-muted' : '' }}">
@@ -31,7 +31,7 @@
                         {{ $task->category->name ?? 'Sin categoría' }}
                     </td>
                     <td class="py-3">
-                        {{0}}
+                        <x-badges.tag_badges :tags="$task->tags" />
                     </td>
                     <td class="pe-4 py-3 text-end">
                         <x-table.table_actions 
