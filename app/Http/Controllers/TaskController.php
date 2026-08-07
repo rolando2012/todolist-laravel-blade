@@ -43,7 +43,9 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
-        //
+        $categories = Category::orderby('name')->get();
+        $tags = Tag::orderby('name')->get();
+        return view('tasks.edit',compact('task', 'categories','tags'));
     }
 
     public function update(UpdateTaskRequest $request, Task $task)
