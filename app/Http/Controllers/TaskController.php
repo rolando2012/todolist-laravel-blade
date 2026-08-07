@@ -26,7 +26,14 @@ class TaskController extends Controller
 
     public function store(StoreTaskRequest $request)
     {
-        //
+        $task = Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'state' => false
+        ]);
+        $task->tags()->sync($request->input('tags',[]));
+        return redirect()->route('tasks.index')->with('success','Tarea creada correctamente.');
     }
 
     public function show(Task $task)
