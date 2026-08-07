@@ -30,7 +30,7 @@ class TaskController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'state' => false
+            'state' => $request->boolean('state'),
         ]);
         $task->tags()->sync($request->input('tags',[]));
         return redirect()->route('tasks.index')->with('success','Tarea creada correctamente.');

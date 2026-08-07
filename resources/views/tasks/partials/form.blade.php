@@ -9,7 +9,6 @@
         class="form-control rounded-3 py-2 @error('title') is-invalid @enderror"
         value="{{ old('title', $task->title) }}"
         placeholder="Ej. Preparar informe trimestral..."
-        required
         autofocus
     >
     @error('title')
@@ -21,7 +20,7 @@
 
 <div class="mb-3">
     <label for="description" class="form-label text-secondary fw-semibold fs-7 mb-2">
-        Descripción
+        Descripción <span class="text-danger">*</span>
     </label>
     <textarea
         name="description"
@@ -112,6 +111,26 @@
             {{ $message }}
         </div>
     @enderror
+</div>
+
+<div class="mb-4">
+    <label class="form-label text-secondary fw-semibold fs-7 mb-2 d-block">
+        Estado
+    </label>
+    <div class="form-check form-switch">
+        <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="state"
+            name="state"
+            value="1"
+            @checked(old('state', $task->state))
+        >
+        <label class="form-check-label text-secondary" for="state">
+            Marcar como completada
+        </label>
+    </div>
 </div>
 
 <div class="d-flex align-items-center gap-3 pt-2">
