@@ -17,7 +17,7 @@
             @forelse($tags as $tag)
                 <tr class="border-bottom">
                     <td class="ps-4 py-3 fw-semibold text-dark">{{ $tag->name }}</td>
-                    <td class="py-3 text-muted">{{ 0 }}</td>
+                    <td class="py-3 text-muted">{{ $tag->tasks_count ?? 0 }}</td>
                     <td class="pe-4 py-3 text-end">
                         <x-table.table_actions 
                             :showUrl="route('tags.show', $tag)"
