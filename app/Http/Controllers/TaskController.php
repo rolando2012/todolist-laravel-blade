@@ -65,4 +65,9 @@ class TaskController extends Controller
         $task->delete();
         return redirect()->route('tasks.index')->with('success', 'Tarea eliminada correctamente.');
     }
+
+    public function state(Task $task){
+        $task->update(['state' => !$task->state,]);
+        return redirect()->route('tasks.index')->with('success', 'Estado de la tarea actualizado correctamente.');
+    }
 }

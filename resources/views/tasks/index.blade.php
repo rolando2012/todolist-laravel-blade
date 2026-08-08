@@ -20,7 +20,10 @@
             @forelse($tasks as $task)
                 <tr class="border-bottom">
                     <td class="ps-4 py-3">
-                        <x-badges.status_badge :completed="$task->state" />
+                        <x-badges.status_toggle
+                            :completed="$task->state"
+                            :url="route('tasks.state', $task)"
+                        />
                     </td>
                     <td class="py-3 fw-semibold text-dark">
                         <span class="{{ $task->state ? 'text-decoration-line-through text-muted' : '' }}">
