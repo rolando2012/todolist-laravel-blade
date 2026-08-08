@@ -50,7 +50,14 @@ class TaskController extends Controller
 
     public function update(UpdateTaskRequest $request, Task $task)
     {
-        // 
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'state' => $request->boolean('state'),
+            'category_id' => $request->category_id,
+        ]);
+        $task->tags()->sync($request->input('tags',[]));
+        return redirect()->route('tasks.index')->with('success', 'Tarea actualizada correctamente.');
     }
 
     public function destroy(Task $task)
