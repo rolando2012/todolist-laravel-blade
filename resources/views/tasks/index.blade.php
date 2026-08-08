@@ -31,7 +31,10 @@
                         </span>
                     </td>
                     <td class="py-3 text-secondary">
-                        {{ $task->category->name ?? 'Sin categoría' }}
+                        <span class="text-truncate d-inline-block table_truncate"
+                            title="{{ $task->category->name ?? 'Sin categoría' }}">
+                            {{ $task->category->name ?? 'Sin categoría' }}
+                        </span>
                     </td>
                     <td class="py-3">
                         <x-badges.tag_badges :tags="$task->tags" />

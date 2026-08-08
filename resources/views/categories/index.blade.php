@@ -18,7 +18,12 @@
         <tbody class="border-0">
             @forelse($categories as $category)
                 <tr class="border-bottom">
-                    <td class="ps-4 py-3 fw-semibold text-dark">{{ $category->name }}</td>
+                    <td class="ps-4 py-3 fw-semibold text-dark">
+                        <span class="text-truncate d-inline-block table_truncate"
+                            title="{{ $category->name }}">
+                            {{ $category->name }}
+                        </span>
+                    </td>
                     <td class="py-3 text-muted">{{ $category->tasks_count ?? 0 }}</td>
                     <td class="pe-4 py-3 text-end">
                         <x-table.table_actions 
