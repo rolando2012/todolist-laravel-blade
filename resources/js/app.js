@@ -1,4 +1,5 @@
 import './bootstrap';
+import './tom-select';
 import * as bootstrap from 'bootstrap';
 window.bootstrap = bootstrap;
 

@@ -13,7 +13,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::latest()->get();
+        $tags = Tag::withCount('tasks')->get();
         return view('tags.index',compact('tags'));
     }
 
@@ -39,6 +39,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
+        $tag->loadCount('tasks');
         return view('tags.show',compact('tag'));
     }
 

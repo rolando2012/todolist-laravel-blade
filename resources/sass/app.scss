@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import "bootstrap-icons/font/bootstrap-icons.css";
+@import "tom-select/dist/css/tom-select.bootstrap5.css";
 
 .nav-pills .nav-link {
     border-radius: 10px;
@@ -80,4 +81,35 @@
 
 .th-detail {
     width: 30%;
+}
+
+.tag-badge{
+    background:#eef4ff;
+    color:#3d5a80;
+    border:1px solid #d6e4ff;
+    font-weight:500;
+    font-size:.82rem;
+}
+
+.status-completed{
+    background:#d1f2e2;
+    color:#0f7a4d;
+    border:1px solid #9ed9bf;
+    font-weight:600;
+}
+
+.status-pending{
+    background:#fff3cd;
+    color:#9a6700;
+    border:1px solid #ffd666;
+    font-weight:600;
+}
+
+.custom-th-style {
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table_truncate {
+    max-width: 25vw
 }

@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [TaskController::class, 'index'])->name('tasks.index');
+Route::redirect('/', '/tasks');
+Route::resource('tasks',TaskController::class);
 Route::resource('categories',CategoryController::class);
 Route::resource('tags', TagController::class);
+Route::patch('/task/{task}/state',[TaskController::class, 'state'])->name('tasks.state');

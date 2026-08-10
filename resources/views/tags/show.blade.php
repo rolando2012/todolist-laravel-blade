@@ -11,7 +11,7 @@
             </x-details.detail_row>
 
             <x-details.detail_row label="Tareas">
-                {{ 0 }}
+                {{ $tag->tasks_count ?? 0 }}
             </x-details.detail_row>
         </x-details.detail_table>
 

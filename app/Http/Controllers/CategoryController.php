@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
+        $categories = Category::withCount('tasks')->get();
         return view('categories.index', compact('categories'));
     }
 
@@ -39,6 +39,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        $category->loadCount('tasks');
         return view('categories.show',compact('category'));
     }
 
