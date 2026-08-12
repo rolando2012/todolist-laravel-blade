@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -19,19 +20,21 @@ class TaskController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskRequest $request)
     {
-        //
+        $data = $request->validated();
+        $task = Task::create([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'category_id' => $data['category_id'] ?? null,
+            'state' => $request->boolean('state') ?? false,
+        ]);
+
+        $task->tags()->sync($data['tags'] ?? []);
+        $task->load(['category', 'tags']);
+        return response()->json($task,201);
     }
 
     /**
@@ -41,14 +44,6 @@ class TaskController extends Controller
     {
         $task->load(['category','tags']);
         return response()->json($task, 200);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Task $task)
-    {
-        //
     }
 
     /**
