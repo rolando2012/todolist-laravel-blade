@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\StoreTaskRequest;
+use App\Http\Requests\Api\UpdateTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
@@ -49,9 +50,18 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+        $task->update([
+            'title' => $data['title'],
+            'description' => $data['description'],
+            'category_id' => $data['category_id'] ?? null,
+            'state' => $request->boolean('state'),
+        ]);
+        $task->tags()->sync($data['tags'] ?? []);
+        $task->load(['category', 'tags']);
+        return response()->json($task,200);
     }
 
     /**
