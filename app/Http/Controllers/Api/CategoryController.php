@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return 'lista';
+        $categories = Category::withCount('tasks')->paginate(10);
+        return response()->json($categories, 200);
     }
 
     /**
@@ -26,9 +28,9 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        return response()->json($category);
     }
 
     /**
@@ -42,8 +44,9 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return response()->json(null,204);
     }
 }
