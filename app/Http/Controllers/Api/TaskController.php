@@ -13,7 +13,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::with(['category', 'tags'])
+                        ->latest()->paginate(10);
+        return response()->json($tasks, 200);
     }
 
     /**
@@ -37,7 +39,8 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        $task->load(['category','tags']);
+        return response()->json($task, 200);
     }
 
     /**
@@ -61,6 +64,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return response()->json(null, 204);
     }
 }
