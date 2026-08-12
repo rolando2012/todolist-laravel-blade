@@ -35,4 +35,7 @@
             @endforelse
         </tbody>
     </x-table.table_card>
+    <div class="d-flex justify-content-center">
+        {{ $tags->links() }}
+    </div>
 </x-layout>
