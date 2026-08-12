@@ -13,7 +13,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::withCount('tasks')->paginate(10);
+        return response()->json($tags, 200);
     }
 
     /**
@@ -29,7 +30,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return response()->json($tag, 200);
     }
 
     /**
@@ -45,6 +46,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return response()->json(null,204);
     }
 }
