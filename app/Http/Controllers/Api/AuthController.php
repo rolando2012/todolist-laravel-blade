@@ -6,16 +6,36 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\RegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function register(RegisterRequest $request){
         $user = User::create($request->validated());
-        $token = $user->createToken($request->name);
+        $token = $user->createToken('auth_token');
         return response()->json([
             'user' => $user,
             'token' => $token->plainTextToken,
             'token_type' => 'Bearer'
         ],201);
+    }
+
+    public function login(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(!Auth::attempt($request->only('email', 'password')))
+            return response()->json(['errors' => ['Las credenciales proporcionadas son incorrectas.']],401);
+
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+        $token = $user->createToken('auth_token');
+        return response()->json([
+            'user' => $user,
+            'token' => $token->plainTextToken,
+            'token_type' => 'Bearer'
+        ], 200);
     }
 }
